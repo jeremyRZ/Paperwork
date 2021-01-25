@@ -68,42 +68,6 @@ function findTheWinner(){
       }
       let randomNumber = getRandomArrayElements(dataNumber, 3) ;
   function readFile() {
-      //console.log("start read data");
-      // 同步读取
-
-      //console.log(finalItem1029)
-
-      // function CountItem(array){
-      //   res = {};
-      //   let arr = Array.from(array);
-      //   arr.forEach(item => {
-      //       if(!res[item.ip_sender]) {
-      //           res[item.ip_sender] = {
-      //               key: item.ip_sender,
-      //               len: 1
-      //           }
-      //       } else {
-      //           res[item.ip_sender].len++;
-      //       }
-      //   })
-      //   res = Object.values(res);
-      //   return JSON.stringify(res)
-      // }
-      // var finalItem1024 = CountItem(Item1024)
-      // var finalItem1029 = CountItem(Item1029)
-      // var finalItem1030 = CountItem(Item1030)
-
-      // console.log("The result of item1024 is " );
-      // console.log(JSON.parse(finalItem1024));
-      // console.log("The result of item1029 is ");
-      // console.log(JSON.parse(finalItem1029));
-      // console.log("The result of Item1030 is ");
-      // console.log(JSON.parse(finalItem1030));
-      // console.log("The same time of Items is ");
-      //console.log(finalTimeServer);
-
-      // console.log(finalDate)
-
       function setDate(array){
           res = {};
           let arr = Array.from(array);
@@ -120,8 +84,6 @@ function findTheWinner(){
       let selectItem1030 =setDate(finalItem1030)
       let selectItem1025 =setDate(finalItem1025)
       let selectItem1026 =setDate(finalItem1026)
-
-      //console.log(selectItem1025);
 
       function finalData(outArray){
         function addInfo(array,sender_name_auxiliary,ip_sender,time_server,lat,lng){
@@ -187,11 +149,7 @@ function findTheWinner(){
     return null;
   }
   let finalResult = CountJson(resultArray, 'lat')
-  //console.log(`Transaction has been evaluated, result is: ${result.toString()}`);
-  // console.log('Transaction has been evaluated, result is:');
-  // console.log(finalResult)
   let lat = finalResult.lat
-  // console.log(lat);
   let addScoreArray = []
 //add Score
   function addScore() {
@@ -209,9 +167,6 @@ function findTheWinner(){
   }
   var addScoreresult = []
   addScoreresult = addScore()
-
-  // console.log('The result with score is:');
-  // console.log(addScoreresult)
   // Choose the highest score
   let highestScore = []
   for (var i = 0; i < addScoreresult.length; i++) {
@@ -252,17 +207,6 @@ for (var i = 0; i < str3.length; i++) {
     str4.push(str3[i]);
 }
 
-
-//
-// var str4=finalItem1030
-// var str5=[]
-// for (var i = 0; i < str3.length; i++) {
-//     str3.push(str3[i]);
-// }
-// for (var i = 0; i < str4.length; i++) {
-//     str3.push(str4[i]);
-// }
-//  console.log(str5);
 var map1024 = []
 var map1029 = []
 var map1030 = []
@@ -279,11 +223,6 @@ for(i=0;i<100;i++){
         if(nameData[i]==item.sender_name_auxiliary&& ipData[i]== item.ip_sender&&latData[i]==item.lat&&timeData[i]==finalDate ) {
           item.score += 100
           Itemcount ++
-          // console.log("The score of Item");
-          // console.log(item.sender_name_auxiliary);
-          // console.log(item.score);
-          // console.log(item.score/count)
-          // console.log("    ");
           if(nameData[i]=='c1024'){
             map1024.push([item.score,Itemcount])
 
