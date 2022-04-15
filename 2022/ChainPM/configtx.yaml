@@ -1,0 +1,58 @@
+Application: {Organizations: null}
+Capabilities:
+  Application: {V1_1: true}
+  Global: {V1_4: true}
+  Orderer: {V1_1: true}
+Orderer:
+  Addresses: &id004 ['order-order:30000']
+  BatchSize: &id005 {AbsoluteMaxBytes: 98 MB, MaxMessageCount: 100, PreferredMaxBytes: 8192
+      KB}
+  BatchTimeout: 2s
+  EtcdRaft:
+    Consenters: &id006
+    - {ClientTLSCert: crypto-config/ordererOrganizations/order.org/orderers/order.order.org/tls/server.crt,
+      Host: order-order, Port: '30000', ServerTLSCert: crypto-config/ordererOrganizations/order.org/orderers/order.order.org/tls/server.crt}
+    Options: &id007 {ElectionTick: 10, HeartbeatTick: 1, MaxInflightBlocks: 5, SnapshotIntervalSize: 20
+        MB, TickInterval: 600ms}
+  OrdererType: etcdraft
+  Organizations: null
+Organizations:
+- &id008 {ID: OrderMSP, MSPDir: crypto-config/ordererOrganizations/order.org/msp,
+  Name: OrderOrg}
+- &id001
+  AnchorPeers:
+  - {Host: peer0-factory, Port: 7051}
+  ID: FactoryMSP
+  MSPDir: crypto-config/peerOrganizations/factory.factory.org/msp
+  Name: FactoryMSP
+- &id002
+  AnchorPeers:
+  - {Host: peer0-contractor, Port: 7051}
+  ID: ContractorMSP
+  MSPDir: crypto-config/peerOrganizations/contractor.contractor.org/msp
+  Name: ContractorMSP
+- &id003
+  AnchorPeers:
+  - {Host: peer0-regulator, Port: 7051}
+  ID: RegulatorMSP
+  MSPDir: crypto-config/peerOrganizations/regulator.regulator.org/msp
+  Name: RegulatorMSP
+Profiles:
+  TwoOrgsOrdererGenesis:
+    Consortiums:
+      SampleConsortium:
+        Organizations:
+        - *id001
+        - *id002
+        - *id003
+    Orderer:
+      Addresses: *id004
+      BatchSize: *id005
+      BatchTimeout: 2s
+      Capabilities: {V1_1: true}
+      EtcdRaft:
+        Consenters: *id006
+        Options: *id007
+      OrdererType: etcdraft
+      Organizations:
+      - *id008
